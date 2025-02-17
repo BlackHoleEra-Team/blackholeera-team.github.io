@@ -1,0 +1,349 @@
+a {
+  text-decoration: none;
+}
+
+html body {
+  min-height: 300vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("../imgs/bg.png");
+  background-position: center 0; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.bar {
+  position: fixed;
+  width: 100%;
+  height: 9%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.8));
+  backdrop-filter: blur(10px); /* 添加亚克力效果 */
+  z-index: 1000;
+}
+
+.bar-team {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  margin-left: 5%; /* 距离左侧5% */
+  width: 90%; /* 设置宽度为父容器的90% */
+}
+
+.bar-team-icon {
+  height: 7vh; /* 使用视口高度的5% */
+  width: auto; /* 保持宽度自适应 */
+  max-width: 100%; /* 确保图标不会超出其容器的宽度 */
+  margin-right: 1em; /* 给图标和文字之间留出一些空间 */
+  object-fit: contain; /* 确保图片在缩放时保持其宽高比 */
+}
+
+.bar-team-name {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  margin: 0; /* 移除默认的p标签外边距 */
+  font-size: 25px; /* 根据需要调整字体大小 */
+  color: white; /* 文字颜色，可以根据背景调整 */
+  font-weight: bold; /* 可选：加粗文字 */
+}
+
+.bar-menu {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%; /* 距离右侧5% */
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  gap: 2em;
+}
+
+.home {
+  position: relative;
+  color: #ffffff;
+  font-size: 1.18em;
+  margin: 0;
+  transform: color 0.3s ease-in-out;
+}
+
+.home::after {
+  position: absolute;
+  content: "";
+  background-color: #f2c3fc;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  bottom: -0.5em;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;  
+}
+
+.home:hover {
+  color: #f1cbf9;
+}
+
+.home:hover::after {
+  transform: scaleX(1);  
+}
+
+.projects-container {
+  position: relative;
+}
+
+.projects {
+  position: relative;
+  color: #ffffff;
+  font-size: 1.18em;
+  margin: 0;
+  transform: color 0.3s ease-in-out;
+  display: block;
+  padding: 10px 0;
+}
+
+.projects::after {
+  content: ">";
+  position: absolute;
+  right: -1em;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.projects:hover {
+  color: #f1cbf9;
+}
+
+.projects:hover::after {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.project-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 30vh;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.projects-container:hover .project-list {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-list li {
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.project-list li:hover {
+  background-color: #ffffff;
+}
+
+.project-list li a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.center-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 998;
+}
+
+
+.center-team-name {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center; /* 文本居中 */
+}
+
+.center-team-name-text {
+  position: relative;
+  color: #ffffff;
+  font-size: 3em;
+  margin-bottom: -0.2em;
+  opacity: 0;
+  animation: flyin 1.5s forwards; /* 添加 forwards 以保持动画结束状态 */
+}
+
+@keyframes flyin {
+  from {
+    transform: translateY(50px); /* 从下方50px处开始 */
+    opacity: 0;
+  }
+  to {
+    transform: translate(0); /* 移动到正常位置 */
+    opacity: 1;
+  }
+}
+
+.center-team-name-text2 {
+  position: relative;
+  color: #6a6a6a;
+  font-size: 1em;
+  opacity: 0;
+  animation: flyin2 1.5s forwards; /* 添加 forwards 以保持动画结束状态 */
+}
+
+@keyframes flyin2 {
+  from {
+    transform: translateY(50px); /* 从下方50px处开始 */
+    opacity: 0;
+  }
+  to {
+    transform: translate(0); /* 移动到稍微低一点的位置 */
+    opacity: 1;
+  }
+}
+
+.typing-text {
+  display: inline-block;
+  position: relative;
+  font-size: 2em;
+  height: 1.5em; /* 设置行高 */
+  line-height: 1.5em;
+  color: #ffffff;
+  white-space: nowrap; /* 防止文字换行 */
+  overflow: hidden; /* 隐藏溢出的文字 */
+}
+
+.typing-text::after {
+  content: '';
+  position: absolute;
+  right: -0.05em; /* 调整光标位置 */
+  top: 0;
+  height: 100%;
+  width: 2px;     
+  background-color: #ffffff;
+  animation: san 0.5s steps(1) infinite;
+}
+
+@keyframes san {
+  0%, 100% {
+    background-color: #ffffff;
+  }
+  50% {
+    background-color: transparent;
+  }
+}
+
+.about-us-main-container {
+  position: absolute;
+  bottom: -58vh; /* 初始位置在页面底部下方 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 60%; /* 设置容器的高度 */
+  background-color: rgba(255, 255, 255, 0.5); /* 设置背景颜色和透明度 */
+  backdrop-filter: blur(10px); /* 添加亚克力效果 */
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  z-index: 999;
+  padding-left: 20px;
+  overflow-y: auto; /* 启用垂直滚动条 */
+}
+
+.about-us-main-container-p {
+  margin: 0 0 2px 0; /* 减少段落之间的垂直间距 */
+  line-height: 1.6; /* 调整行高，使文本更加紧凑 */
+  color: #00000079;
+}
+
+.members {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  gap: 30px; /* 增加图片之间的间距 */
+  margin-top: 20px; /* 上边距 */
+  flex-wrap: wrap; /* 允许换行 */
+}
+
+.member-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease-in-out; /* 添加过渡效果 */
+}
+
+.member-item:hover {
+  transform: scale(1.05); /* 鼠标悬停时放大 */
+}
+
+.member-item img:first-child {
+  width: 100px; /* 固定宽度 */
+  height: 100px; /* 固定高度 */
+  object-fit: cover; /* 保持宽高比并裁剪 */
+  border-radius: 50%; /* 圆形效果 */
+  margin-bottom: 10px; /* 图片和名字之间留出一些空间 */
+  border: 4px solid #ffffff; /* 添加白色边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+}
+
+.member-item p {
+  margin: 0; /* 移除默认段落外边距 */
+  font-size: 1em;
+  color: #000000a2;
+  font-weight: bold; /* 加粗文字 */
+}
+
+.member-item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member-item img:last-child {
+  width: 30px; /* 设置 GitHub 标志的宽度 */
+  height: 30px; /* 设置 GitHub 标志的高度 */
+  margin-top: 10px; /* 留出一些顶部空间 */
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(0px);
+  z-index: 1;
+  transition: backdrop-filter 0.3s ease; /* 添加过渡效果 */
+}
